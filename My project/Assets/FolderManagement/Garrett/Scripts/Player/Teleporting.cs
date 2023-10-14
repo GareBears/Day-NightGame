@@ -10,6 +10,13 @@ public class Teleporting : MonoBehaviour
     public bool daytime = true;
     public bool nightime = false;
 
+    public float playerPosN;
+    public float playerPosD;
+
+    public GameObject sunLight;
+    public GameObject clock;
+    public GameObject lantern;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +36,20 @@ public class Teleporting : MonoBehaviour
             StartCoroutine("BeginDay");
         }
 
+        if (Input.GetKeyDown("1"))
+        {
+            clock.SetActive(true);
+            lantern.SetActive(false);
+        }
+        if (Input.GetKeyDown("2"))
+        {
+            clock.SetActive(false);
+            lantern.SetActive(true);
+        }
+
+        playerPosN = transform.position.y + 200f;
+        playerPosD = transform.position.y - 200f;
+
 
 
        
@@ -39,8 +60,9 @@ public class Teleporting : MonoBehaviour
     {
         playerControls.disabled = true;
         yield return new WaitForSeconds(0.1f);
-        gameObject.transform.position = new Vector3(transform.position.x, 201.58f, transform.position.z);
+        gameObject.transform.position = new Vector3(transform.position.x, playerPosN, transform.position.z);
         daytime = false;
+        sunLight.SetActive(false);
         yield return new WaitForSeconds(0.1f);
         playerControls.disabled = false;
     }
@@ -49,8 +71,9 @@ public class Teleporting : MonoBehaviour
     {
         playerControls.disabled = true;
         yield return new WaitForSeconds(0.1f);
-        gameObject.transform.position = new Vector3(transform.position.x, 1.58f, transform.position.z);
+        gameObject.transform.position = new Vector3(transform.position.x, playerPosD, transform.position.z);
         daytime = true;
+        sunLight.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         playerControls.disabled = false;
     }
