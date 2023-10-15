@@ -5,76 +5,115 @@ using UnityEngine.UIElements;
 
 public class Teleporting : MonoBehaviour
 {
-    PlayerControls playerControls;
 
+    // Scripts ////////////////////////////////////////////////////////////////////
+    PlayerControls playerControls; 
+    SunRotate sunRotate;
+    MoonRotate moonRotate;
+    EquipWatch watchEquip;
+
+    // Time of Day  ///////////////////////////////////////////////////////////////
     public bool daytime = true;
     public bool nightime = false;
-
-    public float playerPosN;
-    public float playerPosD;
-
     public GameObject sunLight;
+    
+    // Positions //////////////////////////////////////////////////////////////////
+    private float playerPosNX;
+    private float playerPosDX;
+
+    // Equipment //////////////////////////////////////////////////////////////////
+    public float currentItem;
     public GameObject clock;
     public GameObject lantern;
 
-    // Start is called before the first frame update
+    ///////////////////////////////////////////////////////////////////////////////
     void Start()
     {
+        currentItem = 0;
         playerControls = gameObject.GetComponent<PlayerControls>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (Input.GetKeyDown(KeyCode.J) && daytime && playerControls.isGrounded == true)
-        {
-            StartCoroutine("BeginNight");
-        }
-        if (Input.GetKeyDown(KeyCode.J) && !daytime && playerControls.isGrounded == true)
-        {
-            StartCoroutine("BeginDay");
-        }
-
-        if (Input.GetKeyDown("1"))
-        {
-            clock.SetActive(true);
-            lantern.SetActive(false);
-        }
-        if (Input.GetKeyDown("2"))
-        {
-            clock.SetActive(false);
-            lantern.SetActive(true);
-        }
-
-        playerPosN = transform.position.y + 200f;
-        playerPosD = transform.position.y - 200f;
-
-
-
-       
         
     }
 
+    ///////////////////////////////////////////////////////////////////////////////
+    void Update()
+    {
+        // DAY TRAVEL ( DO NOT TOUCH ) ////////////////////////////////////////////
+        if (currentItem == 2)
+        {
+            if (Input.GetKeyDown(KeyCode.J) && daytime && playerControls.isGrounded == true)
+            {
+                StartCoroutine("BeginNight");
+                sunRotate.RotateDial();
+                moonRotate.RotateDial();
+            }
+            if (Input.GetKeyDown(KeyCode.J) && !daytime && playerControls.isGrounded == true)
+            {
+                StartCoroutine("BeginDay");
+                sunRotate.ReturnDial();
+                moonRotate.ReturnDial();
+            }
+        }
+        //////////////////////////////////////////////////////////////////////////
+
+        // Equipment Select //////////////////////////////////////////////////////
+        if (Input.GetKeyDown("1") && currentItem != 1)
+        {
+            currentItem = 1f;
+            clock.SetActive(false);
+            lantern.SetActive(false);
+        }
+
+        if (Input.GetKeyDown("2") && currentItem != 2)
+        {
+            currentItem = 2f;
+            clock.SetActive(true);
+            lantern.SetActive(false);
+            watchEquip.EquipTheWatch();
+        }
+        if (Input.GetKeyDown("3") && currentItem != 3)
+        {
+            currentItem = 3f;
+            clock.SetActive(false);
+            lantern.SetActive(true);
+        }
+        /////////////////////////////////////////////////////////////////////////
+
+        // Position Info ////////////////////////////////////////////////////////
+        playerPosNX = transform.position.x + 300f;
+        playerPosDX = transform.position.x - 300f;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////
+    private void LateUpdate()
+    {
+        sunRotate = GameObject.Find("SunDial").GetComponent<SunRotate>();
+        moonRotate = GameObject.Find("MoonDial").GetComponent<MoonRotate>();
+        watchEquip = GameObject.Find("Stopwatch").GetComponent<EquipWatch>();
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////
     IEnumerator BeginNight()
     {
         playerControls.disabled = true;
-        yield return new WaitForSeconds(0.1f);
-        gameObject.transform.position = new Vector3(transform.position.x, playerPosN, transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+        gameObject.transform.position = new Vector3(playerPosNX, transform.position.y, transform.position.z);
+        nightime = true;
         daytime = false;
         sunLight.SetActive(false);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         playerControls.disabled = false;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////
     IEnumerator BeginDay()
     {
         playerControls.disabled = true;
-        yield return new WaitForSeconds(0.1f);
-        gameObject.transform.position = new Vector3(transform.position.x, playerPosD, transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+        gameObject.transform.position = new Vector3(playerPosDX, transform.position.y, transform.position.z);
         daytime = true;
+        nightime = false;
         sunLight.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         playerControls.disabled = false;
     }
 }
