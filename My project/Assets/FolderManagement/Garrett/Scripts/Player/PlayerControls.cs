@@ -11,7 +11,7 @@ public class PlayerControls : MonoBehaviour
     public CharacterController characterController;
     Teleporting teleportScript;
 
-    public float speed = 12f;
+    public float speed = 24f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
 
@@ -21,6 +21,12 @@ public class PlayerControls : MonoBehaviour
 
     Vector3 velocity;
     public bool isGrounded;
+
+    public bool freezing = false;
+    public bool frozen;
+    public bool overheating;
+    public bool burning;
+    public bool tempControl;
 
 
     public void Awake()
@@ -39,6 +45,39 @@ public class PlayerControls : MonoBehaviour
         if(!disabled)
         {
             PlayerAwake();
+        }
+
+        if (tempControl)
+        {
+            // Overheating
+            if (!overheating && !burning)
+            {
+                speed = 24f;
+            }
+            else if (overheating && !burning)
+            {
+                speed = 12f;
+            }
+            else if (overheating && burning)
+            {
+                speed = 0f;
+            }
+        }
+        else if (!tempControl)
+        {
+            // Freezing
+            if (!freezing && !frozen)
+            {
+                speed = 24;
+            }
+            else if (freezing && !frozen)
+            {
+                speed = 12f;
+            }
+            else if (freezing && frozen)
+            {
+                speed = 0f;
+            }
         }
     }
 
