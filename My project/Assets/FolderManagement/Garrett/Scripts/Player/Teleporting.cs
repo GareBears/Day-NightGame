@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 public class Teleporting : MonoBehaviour
 {
 
+    public bool disabled;
+
     // Scripts ////////////////////////////////////////////////////////////////////
     PlayerControls playerControls; 
     SunRotate sunRotate;
@@ -29,7 +31,7 @@ public class Teleporting : MonoBehaviour
     ///////////////////////////////////////////////////////////////////////////////
     void Start()
     {
-        currentItem = 0;
+        currentItem = 1;
         playerControls = gameObject.GetComponent<PlayerControls>();
         
     }
@@ -37,20 +39,23 @@ public class Teleporting : MonoBehaviour
     ///////////////////////////////////////////////////////////////////////////////
     void Update()
     {
-        // DAY TRAVEL ( DO NOT TOUCH ) ////////////////////////////////////////////
-        if (currentItem == 2)
+        if (!disabled)
         {
-            if (Input.GetKeyDown(KeyCode.J) && daytime && playerControls.isGrounded == true)
+            // DAY TRAVEL ( DO NOT TOUCH ) ////////////////////////////////////////
+            if (currentItem == 2)
             {
-                StartCoroutine("BeginNight");
-                sunRotate.RotateDial();
-                moonRotate.RotateDial();
-            }
-            if (Input.GetKeyDown(KeyCode.J) && !daytime && playerControls.isGrounded == true)
-            {
-                StartCoroutine("BeginDay");
-                sunRotate.ReturnDial();
-                moonRotate.ReturnDial();
+                if (Input.GetKeyDown(KeyCode.J) && daytime && playerControls.isGrounded == true)
+                {
+                    StartCoroutine("BeginNight");
+                    sunRotate.RotateDial();
+                    moonRotate.RotateDial();
+                }
+                if (Input.GetKeyDown(KeyCode.J) && !daytime && playerControls.isGrounded == true)
+                {
+                    StartCoroutine("BeginDay");
+                    sunRotate.ReturnDial();
+                    moonRotate.ReturnDial();
+                }
             }
         }
         //////////////////////////////////////////////////////////////////////////
@@ -65,10 +70,24 @@ public class Teleporting : MonoBehaviour
 
         if (Input.GetKeyDown("2") && currentItem != 2)
         {
-            currentItem = 2f;
-            clock.SetActive(true);
-            lantern.SetActive(false);
-            watchEquip.EquipTheWatch();
+            if (!daytime)
+            {
+                currentItem = 2f;
+                clock.SetActive(true);
+                lantern.SetActive(false);
+                watchEquip.EquipTheWatch();
+                moonRotate.NightDial();
+                sunRotate.NightDial();
+            }
+            else if (daytime)
+            {
+                currentItem = 2f;
+                clock.SetActive(true);
+                lantern.SetActive(false);
+                watchEquip.EquipTheWatch();
+                moonRotate.DayDial();
+                sunRotate.DayDial();
+            }
         }
         if (Input.GetKeyDown("3") && currentItem != 3)
         {

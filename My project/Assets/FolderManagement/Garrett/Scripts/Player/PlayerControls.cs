@@ -9,6 +9,7 @@ public class PlayerControls : MonoBehaviour
     public bool disabled = false;
 
     public CharacterController characterController;
+    Teleporting teleportScript;
 
     public float speed = 12f;
     public float gravity = -9.81f;
@@ -26,6 +27,7 @@ public class PlayerControls : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody>();
         //rb.freezeRotation = true;
+        teleportScript = GetComponent<Teleporting>();
     }
     void Start()
     {
@@ -61,5 +63,20 @@ public class PlayerControls : MonoBehaviour
         characterController.Move(move * speed * Time.deltaTime);
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Obstacle")
+        {
+            teleportScript.disabled = true;
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Obstacle")
+        {
+            teleportScript.disabled = false;
+        }
     }
 }

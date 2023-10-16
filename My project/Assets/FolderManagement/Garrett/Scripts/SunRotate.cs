@@ -27,4 +27,16 @@ public class SunRotate : MonoBehaviour
     {
         sunRotate.SetBool("SunMoves", false);
     }
+
+    public void DayDial()
+    {
+        sunRotate.SetBool("NightTime", false);
+        sunRotate.SetBool("SunMoves", false);
+    }
+
+    public void NightDial()
+    {
+        sunRotate.SetBool("NightTime", true);
+        sunRotate.SetBool("SunMoves", true);
+    }
 }

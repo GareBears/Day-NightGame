@@ -27,4 +27,16 @@ public class MoonRotate : MonoBehaviour
     {
         moonRotate.SetBool("MoonMove", false);
     }
+
+    public void NightDial()
+    {
+        moonRotate.SetBool("NightTime", true);
+        moonRotate.SetBool("MoonMove", true);
+    }
+
+    public void DayDial()
+    {
+        moonRotate.SetBool("NightTime", false);
+        moonRotate.SetBool("MoonMove", false);
+    }
 }
