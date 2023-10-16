@@ -28,6 +28,9 @@ public class PlayerControls : MonoBehaviour
     public bool burning;
     public bool tempControl;
 
+    public GameObject heatstroke;
+    public GameObject heatburn;
+
 
     public void Awake()
     {
@@ -53,14 +56,18 @@ public class PlayerControls : MonoBehaviour
             if (!overheating && !burning)
             {
                 speed = 24f;
+                heatstroke.SetActive(false);
             }
             else if (overheating && !burning)
             {
                 speed = 12f;
+                heatstroke.SetActive(true);
+                heatburn.SetActive(false);
             }
             else if (overheating && burning)
             {
                 speed = 0f;
+                heatburn.SetActive(true);
             }
         }
         else if (!tempControl)
