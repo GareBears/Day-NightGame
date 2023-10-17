@@ -12,7 +12,7 @@ public class PlayerControls : MonoBehaviour
     Teleporting teleportScript;
     Interactable interactable;
 
-    public float speed = 18f;
+    public float speed = 15f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
 
@@ -57,18 +57,18 @@ public class PlayerControls : MonoBehaviour
             // Overheating
             if (!overheating && !burning)
             {
-                speed = 18f;
+                speed = 15f;
                 heatstroke.SetActive(false);
             }
             else if (overheating && !burning)
             {
-                speed = 9f;
+                speed = 7.5f;
                 heatstroke.SetActive(true);
                 heatburn.SetActive(false);
             }
             else if (overheating && burning)
             {
-                speed = 0f;
+                speed = 1f;
                 heatburn.SetActive(true);
             }
         }
@@ -77,15 +77,15 @@ public class PlayerControls : MonoBehaviour
             // Freezing
             if (!freezing && !frozen)
             {
-                speed = 18;
+                speed = 15;
             }
             else if (freezing && !frozen)
             {
-                speed = 9f;
+                speed = 7.5f;
             }
             else if (freezing && frozen)
             {
-                speed = 0f;
+                speed = 1f;
             }
         }
     }
