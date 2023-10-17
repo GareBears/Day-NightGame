@@ -7,6 +7,8 @@ public class Teleporting : MonoBehaviour
 {
 
     public bool disabled;
+    public bool hasWatch = false;
+    public bool autoequip;
 
     // Scripts ////////////////////////////////////////////////////////////////////
     PlayerControls playerControls; 
@@ -35,7 +37,6 @@ public class Teleporting : MonoBehaviour
         currentItem = 1;
         playerControls = gameObject.GetComponent<PlayerControls>();
         heat = gameObject.GetComponent<Temperature>();
-        
     }
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -44,7 +45,7 @@ public class Teleporting : MonoBehaviour
         if (!disabled)
         {
             // DAY TRAVEL ( DO NOT TOUCH ) ////////////////////////////////////////
-            if (currentItem == 2)
+            if (currentItem == 2 && hasWatch)
             {
                 if (Input.GetKeyDown(KeyCode.J) && daytime && playerControls.isGrounded == true)
                 {
@@ -70,8 +71,9 @@ public class Teleporting : MonoBehaviour
             lantern.SetActive(false);
         }
 
-        if (Input.GetKeyDown("2") && currentItem != 2)
+        if (Input.GetKeyDown("2") && currentItem != 2 && hasWatch)
         {
+            //EquipWatch();
             clock.SetActive(true);
             sunRotate = GameObject.Find("SunDial").GetComponent<SunRotate>();
             moonRotate = GameObject.Find("MoonDial").GetComponent<MoonRotate>();
@@ -112,9 +114,7 @@ public class Teleporting : MonoBehaviour
     ///////////////////////////////////////////////////////////////////////////////
     private void LateUpdate()
     {
-        //sunRotate = GameObject.Find("SunDial").GetComponent<SunRotate>();
-        //moonRotate = GameObject.Find("MoonDial").GetComponent<MoonRotate>();
-        //watchEquip = GameObject.Find("Stopwatch").GetComponent<EquipWatch>();
+
     }
 
     ///////////////////////////////////////////////////////////////////////////////

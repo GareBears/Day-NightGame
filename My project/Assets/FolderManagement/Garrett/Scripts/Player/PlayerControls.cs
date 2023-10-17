@@ -10,8 +10,9 @@ public class PlayerControls : MonoBehaviour
 
     public CharacterController characterController;
     Teleporting teleportScript;
+    Interactable interactable;
 
-    public float speed = 24f;
+    public float speed = 18f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
 
@@ -37,6 +38,7 @@ public class PlayerControls : MonoBehaviour
         //rb = GetComponent<Rigidbody>();
         //rb.freezeRotation = true;
         teleportScript = GetComponent<Teleporting>();
+        interactable = GameObject.Find("Interactable").GetComponent<Interactable>();
     }
     void Start()
     {
@@ -55,12 +57,12 @@ public class PlayerControls : MonoBehaviour
             // Overheating
             if (!overheating && !burning)
             {
-                speed = 24f;
+                speed = 18f;
                 heatstroke.SetActive(false);
             }
             else if (overheating && !burning)
             {
-                speed = 12f;
+                speed = 9f;
                 heatstroke.SetActive(true);
                 heatburn.SetActive(false);
             }
@@ -75,11 +77,11 @@ public class PlayerControls : MonoBehaviour
             // Freezing
             if (!freezing && !frozen)
             {
-                speed = 24;
+                speed = 18;
             }
             else if (freezing && !frozen)
             {
-                speed = 12f;
+                speed = 9f;
             }
             else if (freezing && frozen)
             {
@@ -116,6 +118,14 @@ public class PlayerControls : MonoBehaviour
         if (other.tag == "Obstacle")
         {
             teleportScript.disabled = true;
+        }
+        if (other.tag == "Interactable")
+        {
+            interactable.OnPickUp();
+        }
+        if (other.tag == "Watch")
+        {
+            interactable.WatchPickUp();
         }
     }
     public void OnTriggerExit(Collider other)

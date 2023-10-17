@@ -10,73 +10,79 @@ public class Temperature : MonoBehaviour
 
     public bool inDay = true;
 
-    PlayerControls playerControls; 
+    PlayerControls playerControls;
+    Teleporting teleporting;
 
     void Start()
     {
        playerControls = GetComponent<PlayerControls>();
+        teleporting = GetComponent<Teleporting>();
     }
 
    
     void Update()
     {
-        if (inDay && temperature <= 60f)
+        if (teleporting.hasWatch == true)
         {
-            temperature += Time.deltaTime;
-        }
-        else if (!inDay && temperature >= -60f)
-        {
-            temperature -= Time.deltaTime;
-        }
+            if (inDay && temperature <= 60f)
+            {
+                temperature += Time.deltaTime;
+            }
+            else if (!inDay && temperature >= -60f)
+            {
+                temperature -= Time.deltaTime;
+            }
 
-        if (temperature >= 0)
-        {
-            playerControls.tempControl = true;
-        }
-        else if (temperature <= 0)
-        {
-            playerControls.tempControl = false;
-        }
+            if (temperature >= 0)
+            {
+                playerControls.tempControl = true;
+            }
+            else if (temperature <= 0)
+            {
+                playerControls.tempControl = false;
+            }
 
-        // Overheating
-        if ( temperature >= 40f)
-        {
-            playerControls.overheating = true;
-        }
-        else
-        {
-            playerControls.overheating = false;
-        }
+            // Overheating
+            if (temperature >= 40f)
+            {
+                playerControls.overheating = true;
+            }
+            else
+            {
+                playerControls.overheating = false;
+            }
 
-        // Burning
-        if (temperature >= 50f)
-        {
-            playerControls.burning = true;
-        }
-        else
-        {
-            playerControls.burning= false;
-        }
+            // Burning
+            if (temperature >= 50f)
+            {
+                playerControls.burning = true;
+            }
+            else
+            {
+                playerControls.burning = false;
+            }
 
-        // Freezing
-        if (temperature <= -40f)
-        {
-            playerControls.freezing = true;
-        }
-        else
-        {
-            playerControls.freezing = false;
-        }
+            // Freezing
+            if (temperature <= -40f)
+            {
+                playerControls.freezing = true;
+            }
+            else
+            {
+                playerControls.freezing = false;
+            }
 
-        // Frozen
-        if (temperature <= -55f)
-        {
-            playerControls.frozen = true;
+            // Frozen
+            if (temperature <= -55f)
+            {
+                playerControls.frozen = true;
+            }
+            else
+            {
+                playerControls.frozen = false;
+            }
         }
-        else
-        {
-            playerControls.frozen = false;
-        }
+        
 
 
     }
