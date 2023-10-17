@@ -18,10 +18,10 @@ public class OBJInteract : MonoBehaviour
     private float doorOpenPos;
 
     // Pillars ////////////////////////////////////////////////
-    //private Animator pillarMoveAnim;
-    //public bool pillardown;
-    //public float pillarnumber;
-    //private bool secretBool;
+    private Animator pillarMoveAnim;
+    public bool pillardown = false;
+    public float pillarnumber;
+    private bool secretBool;
     //private bool secretBool2;
     //private bool secretBool3;
 
@@ -37,7 +37,7 @@ public class OBJInteract : MonoBehaviour
 
 
         telescopeAnim = GameObject.Find("Telescope").GetComponent<Animator>();
-        //pillarMoveAnim = GameObject.Find("Pillar").GetComponent<Animator>();
+        pillarMoveAnim = GameObject.Find("PuzzlePillar/FirePillar").GetComponent<Animator>();
     }
 
     public void RotateOBJ()
@@ -94,22 +94,26 @@ public class OBJInteract : MonoBehaviour
 
     public void PillarMove()
     {
+        
 
-        //Debug.Log("THIS IS A TEST");
-        //if (pillarnumber == 1)
-        //{
-            //if (!pillardown)
-            //{
-           //     pillarMoveAnim.SetBool("PillarMove", true);
-            //    secretBool = true;
-           // }
-         //   else if (pillardown)
-         //   {
-          //      pillarMoveAnim.SetBool("PillarMove", false);
-         //       secretBool = false;
-          //  }
-      //  }
-
+        if (pillarnumber == 1)
+        {
+            if (!pillardown)
+            {
+                pillarMoveAnim.SetBool("PillarMove", true);
+                pillardown = true;
+                //secretBool = true;
+            }
+            else if (pillardown)
+            {
+                pillarMoveAnim.SetBool("PillarMove", false);
+                pillardown = false;
+            }
+        }
+        if (pillarnumber == 2)
+        {
+            Debug.Log("Test");
+        }
     }
 
 

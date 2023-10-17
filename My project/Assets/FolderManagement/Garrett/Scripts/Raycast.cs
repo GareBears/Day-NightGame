@@ -20,6 +20,9 @@ public class Raycast : MonoBehaviour
     public bool clickCooldown = false;
 
     private const string interactableTag = "Interactable";
+    private const string pillarTag = "Pillar";
+
+    public bool seeing;
 
     private void Update()
     {
@@ -32,6 +35,7 @@ public class Raycast : MonoBehaviour
         {
             if (hit.collider.CompareTag(interactableTag))
             {
+                seeing = true;
                 if (!doOnce)
                 {
                     interactedObj = hit.collider.gameObject.GetComponent<OBJInteract>();
@@ -48,6 +52,27 @@ public class Raycast : MonoBehaviour
                     
                 }
             }
+            ///////////////////////////////////////////////////////
+
+            if (hit.collider.CompareTag(pillarTag))
+            {
+                seeing = true;
+                if (!doOnce)
+                {
+                    interactedObj = hit.collider.gameObject.GetComponent<OBJInteract>();
+                    CrosshairChange(true);
+                }
+
+                isCrossHairActive = true;
+                doOnce = true;
+
+                if (Input.GetKeyDown(interactwithObj))
+                {
+                    interactedObj.PillarMove();
+                }
+            }
+
+            ////////////////////////////////////////
         }
 
         else
@@ -56,6 +81,7 @@ public class Raycast : MonoBehaviour
             {
                 CrosshairChange(false);
                 doOnce = false;
+                seeing = false;
             }
         }
     }

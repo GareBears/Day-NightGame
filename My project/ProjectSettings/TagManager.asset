@@ -7,7 +7,7 @@ TagManager:
   - Obstacle
   - Interactable
   - Watch
-  - Pillars
+  - Pillar
   layers:
   - Default
   - TransparentFX
