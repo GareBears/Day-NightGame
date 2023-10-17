@@ -17,6 +17,8 @@ public class Raycast : MonoBehaviour
     private bool isCrossHairActive;
     private bool doOnce;
 
+    public bool clickCooldown = false;
+
     private const string interactableTag = "Interactable";
 
     private void Update()
@@ -26,15 +28,14 @@ public class Raycast : MonoBehaviour
 
         int mask = 1 << LayerMask.NameToLayer(excludeLayerName) | layerMaskInteract.value;
 
-        if (Physics.Raycast(transform.position, fwd, out hit, rayLength, mask))
+        if (Physics.Raycast(transform.position, fwd, out hit, rayLength, mask) && !clickCooldown)
         {
-            if(hit.collider.CompareTag(interactableTag))
+            if (hit.collider.CompareTag(interactableTag))
             {
                 if (!doOnce)
                 {
                     interactedObj = hit.collider.gameObject.GetComponent<OBJInteract>();
                     CrosshairChange(true);
-                    interactedObj.GlowObj();
                 }
 
                 isCrossHairActive = true;
@@ -42,8 +43,9 @@ public class Raycast : MonoBehaviour
 
                 if (Input.GetKeyDown(interactwithObj))
                 {
-                    //Add if statements here to pick objects
-                    interactedObj.RotateOBJ();
+                    StartCoroutine(Cooldown());
+                    interactedObj.RotateTeleScope();
+                    
                 }
             }
         }
@@ -54,7 +56,6 @@ public class Raycast : MonoBehaviour
             {
                 CrosshairChange(false);
                 doOnce = false;
-                interactedObj.ResetMat();
             }
         }
     }
@@ -70,5 +71,12 @@ public class Raycast : MonoBehaviour
             crosshair.color = Color.white;
             isCrossHairActive = false;
         }
+    }
+
+    IEnumerator Cooldown()
+    {
+        clickCooldown = true;
+        yield return new WaitForSeconds(1);
+        clickCooldown = false;
     }
 }
