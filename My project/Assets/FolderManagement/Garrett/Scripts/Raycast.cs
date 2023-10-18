@@ -21,6 +21,11 @@ public class Raycast : MonoBehaviour
 
     private const string interactableTag = "Interactable";
     private const string pillarTag = "Pillar";
+    private const string pillarTag2 = "Pillar2";
+    private const string pillarTag3 = "Pillar3";
+    private const string pillarTag4 = "Pillar4";
+    private const string pillarTag5 = "Pillar5";
+    private const string pillarTag6 = "Pillar6";
 
     public bool seeing;
 
@@ -33,6 +38,8 @@ public class Raycast : MonoBehaviour
 
         if (Physics.Raycast(transform.position, fwd, out hit, rayLength, mask) && !clickCooldown)
         {
+            //// TELESCOPE ////
+
             if (hit.collider.CompareTag(interactableTag))
             {
                 seeing = true;
@@ -49,11 +56,13 @@ public class Raycast : MonoBehaviour
                 {
                     StartCoroutine(Cooldown());
                     interactedObj.RotateTeleScope();
-                    
                 }
             }
             ///////////////////////////////////////////////////////
 
+            //// PILLAR ONE ////
+
+            ///////////////////////////////////////////////////////
             if (hit.collider.CompareTag(pillarTag))
             {
                 seeing = true;
@@ -72,7 +81,120 @@ public class Raycast : MonoBehaviour
                 }
             }
 
-            ////////////////////////////////////////
+            ///////////////////////////////////////////////////////
+
+            //// PILLAR TWO ////
+
+            ///////////////////////////////////////////////////////
+            if (hit.collider.CompareTag(pillarTag2))
+            {
+                seeing = true;
+                if (!doOnce)
+                {
+                    interactedObj = hit.collider.gameObject.GetComponent<OBJInteract>();
+                    CrosshairChange(true);
+                }
+
+                isCrossHairActive = true;
+                doOnce = true;
+
+                if (Input.GetKeyDown(interactwithObj))
+                {
+                    interactedObj.PillarMove2();
+                }
+            }
+
+            ///////////////////////////////////////////////////////
+
+            //// PILLAR THREE ////
+
+            ///////////////////////////////////////////////////////
+            if (hit.collider.CompareTag(pillarTag3))
+            {
+                seeing = true;
+                if (!doOnce)
+                {
+                    interactedObj = hit.collider.gameObject.GetComponent<OBJInteract>();
+                    CrosshairChange(true);
+                }
+
+                isCrossHairActive = true;
+                doOnce = true;
+
+                if (Input.GetKeyDown(interactwithObj))
+                {
+                    interactedObj.PillarMove3();
+                }
+            }
+
+            ///////////////////////////////////////////////////////
+
+            //// PILLAR FOUR ////
+
+            ///////////////////////////////////////////////////////
+            if (hit.collider.CompareTag(pillarTag4))
+            {
+                seeing = true;
+                if (!doOnce)
+                {
+                    interactedObj = hit.collider.gameObject.GetComponent<OBJInteract>();
+                    CrosshairChange(true);
+                }
+
+                isCrossHairActive = true;
+                doOnce = true;
+
+                if (Input.GetKeyDown(interactwithObj))
+                {
+                    interactedObj.PillarMove4();
+                }
+            }
+
+            ///////////////////////////////////////////////////////
+
+            //// PILLAR FIVE ////
+
+            ///////////////////////////////////////////////////////
+            if (hit.collider.CompareTag(pillarTag5))
+            {
+                seeing = true;
+                if (!doOnce)
+                {
+                    interactedObj = hit.collider.gameObject.GetComponent<OBJInteract>();
+                    CrosshairChange(true);
+                }
+
+                isCrossHairActive = true;
+                doOnce = true;
+
+                if (Input.GetKeyDown(interactwithObj))
+                {
+                    interactedObj.PillarMove5();
+                }
+            }
+
+            ///////////////////////////////////////////////////////
+
+            //// PILLAR SIX ////
+
+            ///////////////////////////////////////////////////////
+            if (hit.collider.CompareTag(pillarTag6))
+            {
+                seeing = true;
+                if (!doOnce)
+                {
+                    interactedObj = hit.collider.gameObject.GetComponent<OBJInteract>();
+                    CrosshairChange(true);
+                }
+
+                isCrossHairActive = true;
+                doOnce = true;
+
+                if (Input.GetKeyDown(interactwithObj))
+                {
+                    interactedObj.PillarMove6();
+                }
+            }
         }
 
         else
