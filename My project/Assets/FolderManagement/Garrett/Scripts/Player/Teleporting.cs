@@ -19,6 +19,7 @@ public class Teleporting : MonoBehaviour
     SunRotate sunRotate;
     MoonRotate moonRotate;
     EquipWatch watchEquip;
+    EquipLantern lanternEquip;
     Temperature heat;
     SleepFade whitefade;
 
@@ -111,6 +112,8 @@ public class Teleporting : MonoBehaviour
             currentItem = 3f;
             clock.SetActive(false);
             lantern.SetActive(true);
+            lanternEquip = GameObject.Find("Playerlantern").GetComponent<EquipLantern>();
+            lanternEquip.EquipTheLantern();
         }
         /////////////////////////////////////////////////////////////////////////
 

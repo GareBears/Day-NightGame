@@ -21,6 +21,7 @@ public class Raycast : MonoBehaviour
     public bool clickCooldown = false;
 
     private const string interactableTag = "Interactable";
+    private const string altarTag = "Altar";
     private const string pillarTag = "Pillar";
     private const string pillarTag2 = "Pillar2";
     private const string pillarTag3 = "Pillar3";
@@ -59,6 +60,45 @@ public class Raycast : MonoBehaviour
                     interactedObj.RotateTeleScope();
                 }
             }
+
+
+
+
+            //// ALTAR ////
+
+            if (hit.collider.CompareTag(altarTag))
+            {
+                seeing = true;
+                if (!doOnce)
+                {
+                    interactedObj = hit.collider.gameObject.GetComponent<OBJInteract>();
+                    CrosshairChange(true);
+                }
+
+                isCrossHairActive = true;
+                doOnce = true;
+
+                if (Input.GetKeyDown(interactwithObj))
+                {
+                    interactedObj.AltarInteract();
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             ///////////////////////////////////////////////////////
 
             //// PILLAR ONE ////

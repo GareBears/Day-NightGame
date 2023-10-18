@@ -6,6 +6,7 @@ using static Unity.VisualScripting.Member;
 
 public class OBJInteract : MonoBehaviour
 {
+    PlayerControls playerControls;
     PillarDoor pillarDoor;
 
     // Telescope //////////////////////////////////////////////
@@ -16,6 +17,10 @@ public class OBJInteract : MonoBehaviour
 
     public GameObject door;
     private float doorOpenPos;
+
+    // Altar ////////////////////////////////////////////////
+    private GameObject Altar;
+    public GameObject Gems;
 
     // Pillars ////////////////////////////////////////////////
     private Animator pillarMoveAnim;
@@ -57,12 +62,21 @@ public class OBJInteract : MonoBehaviour
 
     private void Awake()
     {
+        playerControls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
+
+        ///////////////////////////////////////////////////////
+
         pillarDoor = GameObject.FindGameObjectWithTag("PillarPuzzleDoor").GetComponent<PillarDoor>();
 
         ///////////////////////////////////////////////////////
 
         doorOpenPos = door.transform.position.y;
         telescopeAnim = GameObject.Find("Telescope").GetComponent<Animator>();
+
+        ///////////////////////////////////////////////////////
+        
+        Altar = GameObject.Find("Altar");
+        Gems = GameObject.Find("AltarGems");
 
         ///////////////////////////////////////////////////////
 
@@ -128,6 +142,16 @@ public class OBJInteract : MonoBehaviour
             right = false;
         }
     }
+
+    ///////////////////////////////////////////////////////
+    
+    public void AltarInteract()
+    {
+        if (playerControls.canWin == true)
+        {
+            Gems.SetActive(true);
+        }
+    } 
 
     ///////////////////////////////////////////////////////
 
