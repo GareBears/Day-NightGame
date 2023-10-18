@@ -10,6 +10,7 @@ public class Raycast : MonoBehaviour
     [SerializeField] private string excludeLayerName = null;
 
     private OBJInteract interactedObj;
+    Teleporting teleportscript;
 
     [SerializeField] private KeyCode interactwithObj = KeyCode.Mouse0;
 
@@ -75,7 +76,7 @@ public class Raycast : MonoBehaviour
                 isCrossHairActive = true;
                 doOnce = true;
 
-                if (Input.GetKeyDown(interactwithObj))
+                if (Input.GetKeyDown(interactwithObj) && teleportscript.currentItem == 3)
                 {
                     interactedObj.PillarMove();
                 }
@@ -98,7 +99,7 @@ public class Raycast : MonoBehaviour
                 isCrossHairActive = true;
                 doOnce = true;
 
-                if (Input.GetKeyDown(interactwithObj))
+                if (Input.GetKeyDown(interactwithObj) && teleportscript.currentItem == 3)
                 {
                     interactedObj.PillarMove2();
                 }
@@ -121,7 +122,7 @@ public class Raycast : MonoBehaviour
                 isCrossHairActive = true;
                 doOnce = true;
 
-                if (Input.GetKeyDown(interactwithObj))
+                if (Input.GetKeyDown(interactwithObj) && teleportscript.currentItem == 3)
                 {
                     interactedObj.PillarMove3();
                 }
@@ -144,7 +145,7 @@ public class Raycast : MonoBehaviour
                 isCrossHairActive = true;
                 doOnce = true;
 
-                if (Input.GetKeyDown(interactwithObj))
+                if (Input.GetKeyDown(interactwithObj) && teleportscript.currentItem == 3)
                 {
                     interactedObj.PillarMove4();
                 }
@@ -167,7 +168,7 @@ public class Raycast : MonoBehaviour
                 isCrossHairActive = true;
                 doOnce = true;
 
-                if (Input.GetKeyDown(interactwithObj))
+                if (Input.GetKeyDown(interactwithObj) && teleportscript.currentItem == 3)
                 {
                     interactedObj.PillarMove5();
                 }
@@ -190,7 +191,7 @@ public class Raycast : MonoBehaviour
                 isCrossHairActive = true;
                 doOnce = true;
 
-                if (Input.GetKeyDown(interactwithObj))
+                if (Input.GetKeyDown(interactwithObj) && teleportscript.currentItem == 3)
                 {
                     interactedObj.PillarMove6();
                 }
@@ -226,5 +227,10 @@ public class Raycast : MonoBehaviour
         clickCooldown = true;
         yield return new WaitForSeconds(1);
         clickCooldown = false;
+    }
+
+    void Awake()
+    {
+        teleportscript = GameObject.Find("FPP").GetComponent<Teleporting>();
     }
 }

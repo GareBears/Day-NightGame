@@ -10,6 +10,10 @@ public class Teleporting : MonoBehaviour
     public bool hasWatch = false;
     public bool autoequip;
 
+    public bool hasRuby;
+    public bool hasEmerald;
+    public bool hasSapphire;
+
     // Scripts ////////////////////////////////////////////////////////////////////
     PlayerControls playerControls; 
     SunRotate sunRotate;
