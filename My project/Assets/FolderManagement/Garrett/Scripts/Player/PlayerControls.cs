@@ -32,6 +32,11 @@ public class PlayerControls : MonoBehaviour
     public GameObject heatstroke;
     public GameObject heatburn;
 
+    public bool hasBlueGem = false;
+    public bool hasRedGem = false;
+    public bool hasGreenGem = false;
+    public bool canWin = false;
+
 
     public void Awake()
     {
@@ -39,7 +44,14 @@ public class PlayerControls : MonoBehaviour
         //rb.freezeRotation = true;
         teleportScript = GetComponent<Teleporting>();
         interactable = GameObject.Find("Interactable").GetComponent<Interactable>();
-    }
+
+
+        hasBlueGem = false;
+        hasRedGem = false;
+        hasGreenGem = false;
+        canWin = false;
+
+}
     void Start()
     {
        
@@ -88,6 +100,11 @@ public class PlayerControls : MonoBehaviour
                 speed = 1f;
             }
         }
+
+        if (hasBlueGem == true && hasGreenGem == true && hasRedGem == true)
+        {
+            canWin = true;
+        }
     }
 
     public void PlayerAwake()
@@ -126,6 +143,21 @@ public class PlayerControls : MonoBehaviour
         if (other.tag == "Watch")
         {
             interactable.WatchPickUp();
+        }
+        if (other.tag == "BlueGem")
+        {
+            Destroy(other.gameObject);
+            hasBlueGem = true;
+        }
+        if (other.tag == "RedGem")
+        {
+            Destroy(other.gameObject);
+            hasRedGem = true;
+        }
+        if (other.tag == "GreenGem")
+        {
+            Destroy(other.gameObject);
+            hasGreenGem = true;
         }
     }
     public void OnTriggerExit(Collider other)
