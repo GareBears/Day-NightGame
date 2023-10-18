@@ -20,6 +20,7 @@ public class Teleporting : MonoBehaviour
     MoonRotate moonRotate;
     EquipWatch watchEquip;
     Temperature heat;
+    SleepFade whitefade;
 
     // Time of Day  ///////////////////////////////////////////////////////////////
     public bool daytime = true;
@@ -41,6 +42,7 @@ public class Teleporting : MonoBehaviour
         currentItem = 1;
         playerControls = gameObject.GetComponent<PlayerControls>();
         heat = gameObject.GetComponent<Temperature>();
+        whitefade = GameObject.Find("Canvas").GetComponent<SleepFade>();
     }
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -51,17 +53,19 @@ public class Teleporting : MonoBehaviour
             // DAY TRAVEL ( DO NOT TOUCH ) ////////////////////////////////////////
             if (currentItem == 2 && hasWatch)
             {
-                if (Input.GetKeyDown(KeyCode.J) && daytime && playerControls.isGrounded == true)
+                if (Input.GetKeyDown(KeyCode.J) && daytime && playerControls.isGrounded == true && whitefade.fadecooldown == false)
                 {
                     StartCoroutine("BeginNight");
                     sunRotate.RotateDial();
                     moonRotate.RotateDial();
+                    whitefade.FadetoSleep();
                 }
-                if (Input.GetKeyDown(KeyCode.J) && !daytime && playerControls.isGrounded == true)
+                if (Input.GetKeyDown(KeyCode.J) && !daytime && playerControls.isGrounded == true && whitefade.fadecooldown == false)
                 {
                     StartCoroutine("BeginDay");
                     sunRotate.ReturnDial();
                     moonRotate.ReturnDial();
+                    whitefade.FadetoSleep();
                 }
             }
         }
@@ -125,7 +129,7 @@ public class Teleporting : MonoBehaviour
     IEnumerator BeginNight()
     {
         playerControls.disabled = true;
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1f);
         gameObject.transform.position = new Vector3(playerPosNX, transform.position.y, transform.position.z);
         nightime = true;
         daytime = false;
@@ -139,7 +143,7 @@ public class Teleporting : MonoBehaviour
     IEnumerator BeginDay()
     {
         playerControls.disabled = true;
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1f);
         gameObject.transform.position = new Vector3(playerPosDX, transform.position.y, transform.position.z);
         daytime = true;
         nightime = false;
