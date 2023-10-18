@@ -68,28 +68,33 @@ public class OBJInteract : MonoBehaviour
 
         // Pillar 1 //
         pillarMoveAnim = GameObject.Find("PuzzlePillar1/FirePillar1").GetComponent<Animator>();
-        pillarLantern1 = GameObject.Find("PuzzlePillar1/FirePillar1/PillarLantern1");
         pillar1 = GameObject.Find("PuzzlePillar1/FirePillar1");
+        pillarLantern1 = GameObject.Find("PuzzlePillar1/FirePillar1/PillarLantern1");
 
         // Pillar 2 //
         pillarMoveAnim2 = GameObject.Find("PuzzlePillar2/FirePillar2").GetComponent<Animator>();
         pillar2 = GameObject.Find("PuzzlePillar2/FirePillar2");
+        pillarLantern2 = GameObject.Find("PuzzlePillar2/FirePillar2/PillarLantern2");
 
         // Pillar 3 //
         pillarMoveAnim3 = GameObject.Find("PuzzlePillar3/FirePillar3").GetComponent<Animator>();
         pillar3 = GameObject.Find("PuzzlePillar3/FirePillar3");
+        pillarLantern3 = GameObject.Find("PuzzlePillar3/FirePillar3/PillarLantern3");
 
         // Pillar 4 //
         pillarMoveAnim4 = GameObject.Find("PuzzlePillar4/FirePillar4").GetComponent<Animator>();
         pillar4 = GameObject.Find("PuzzlePillar4/FirePillar4");
+        pillarLantern4 = GameObject.Find("PuzzlePillar4/FirePillar4/PillarLantern4");
 
         // Pillar 5 //
         pillarMoveAnim5 = GameObject.Find("PuzzlePillar5/FirePillar5").GetComponent<Animator>();
         pillar5 = GameObject.Find("PuzzlePillar5/FirePillar5");
+        pillarLantern5 = GameObject.Find("PuzzlePillar5/FirePillar5/PillarLantern5");
 
         // Pillar 6 //
         pillarMoveAnim6 = GameObject.Find("PuzzlePillar6/FirePillar6").GetComponent<Animator>();
         pillar6 = GameObject.Find("PuzzlePillar6/FirePillar6");
+        pillarLantern6 = GameObject.Find("PuzzlePillar6/FirePillar6/PillarLantern6");
     }
 
     public void RotateTeleScope()
@@ -149,14 +154,16 @@ public class OBJInteract : MonoBehaviour
         if (!pillardown2)
         {
             pillarMoveAnim2.SetBool("PillarMove2", true);
+            pillarDoor.fakeBool = true;
             pillardown2 = true;
-            //pillarLantern2.SetActive(true);
+            pillarLantern2.SetActive(true);
         }
         else if (pillardown2)
         {
             pillarMoveAnim2.SetBool("PillarMove2", false);
+            pillarDoor.fakeBool = false;
             pillardown2 = false;
-            //pillarLantern2.SetActive(false);
+            pillarLantern2.SetActive(false);
         }
     }
 
@@ -165,14 +172,16 @@ public class OBJInteract : MonoBehaviour
         if (!pillardown3)
         {
             pillarMoveAnim3.SetBool("PillarMove3", true);
+            pillarDoor.fakeBool2 = true;
             pillardown3 = true;
-            //pillarLantern3.SetActive(true);
+            pillarLantern3.SetActive(true);
         }
         else if (pillardown3)
         {
             pillarMoveAnim3.SetBool("PillarMove3", false);
+            pillarDoor.fakeBool2 = false;
             pillardown3 = false;
-            //pillarLantern3.SetActive(false);
+            pillarLantern3.SetActive(false);
         }
     }
 
@@ -183,7 +192,7 @@ public class OBJInteract : MonoBehaviour
             pillarMoveAnim4.SetBool("PillarMove4", true);
             pillarDoor.secretBool2 = true;
             pillardown4 = true;
-            //pillarLantern4.SetActive(true);
+            pillarLantern4.SetActive(true);
 
         }
         else if (pillardown4)
@@ -191,7 +200,7 @@ public class OBJInteract : MonoBehaviour
             pillarMoveAnim4.SetBool("PillarMove4", false);
             pillarDoor.secretBool2 = false;
             pillardown4 = false;
-            //pillarLantern3.SetActive(false);
+            pillarLantern4.SetActive(false);
             
         }
     }
@@ -203,14 +212,14 @@ public class OBJInteract : MonoBehaviour
             pillarMoveAnim5.SetBool("PillarMove5", true);
             pillarDoor.secretBool3 = true;
             pillardown5 = true;
-            //pillarLantern5.SetActive(true);
+            pillarLantern5.SetActive(true);
         }
         else if (pillardown5)
         {
             pillarMoveAnim5.SetBool("PillarMove5", false);
             pillarDoor.secretBool3 = false;
             pillardown5 = false;
-            //pillarLantern5.SetActive(false);
+            pillarLantern5.SetActive(false);
         }
     }
 
@@ -219,14 +228,16 @@ public class OBJInteract : MonoBehaviour
         if (!pillardown6)
         {
             pillarMoveAnim6.SetBool("PillarMove6", true);
+            pillarDoor.fakeBool3 = true;
             pillardown6 = true;
-            //pillarLantern6.SetActive(true);
+            pillarLantern6.SetActive(true);
         }
         else if (pillardown6)
         {
             pillarMoveAnim6.SetBool("PillarMove6", false);
+            pillarDoor.fakeBool3 = false;
             pillardown6 = false;
-            //pillarLantern6.SetActive(false);
+            pillarLantern6.SetActive(false);
         }
     }
 

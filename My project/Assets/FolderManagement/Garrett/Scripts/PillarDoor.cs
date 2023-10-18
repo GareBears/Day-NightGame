@@ -8,6 +8,10 @@ public class PillarDoor : MonoBehaviour
     public bool secretBool2 = false;
     public bool secretBool3 = false;
 
+    public bool fakeBool = false;
+    public bool fakeBool2 = false;
+    public bool fakeBool3 = false;
+
     private GameObject pillarDoor;
 
     private float openPosY;
@@ -25,16 +29,20 @@ public class PillarDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (secretBool)
+        if (!fakeBool && !fakeBool2 && !fakeBool3)
         {
-            if (secretBool2)
+            if (secretBool)
             {
-                if (secretBool3)
+                if (secretBool2)
                 {
-                    pillarDoor.transform.position = new Vector3(pillarDoor.transform.position.x, openPosY, pillarDoor.transform.position.z);
+                    if (secretBool3)
+                    {
+                        pillarDoor.transform.position = new Vector3(pillarDoor.transform.position.x, openPosY, pillarDoor.transform.position.z);
+                    }
                 }
             }
         }
+        
         
 
         if (!secretBool && secretBool2 && secretBool3 || !secretBool && !secretBool2 && secretBool3 || !secretBool && !secretBool2 && !secretBool3)
@@ -48,6 +56,11 @@ public class PillarDoor : MonoBehaviour
         }
 
         if (secretBool && secretBool2 && !secretBool3 || !secretBool && secretBool2 && !secretBool3)
+        {
+            pillarDoor.transform.position = new Vector3(pillarDoor.transform.position.x, closedPosY, pillarDoor.transform.position.z);
+        }
+
+        if (fakeBool || fakeBool2 || fakeBool3)
         {
             pillarDoor.transform.position = new Vector3(pillarDoor.transform.position.x, closedPosY, pillarDoor.transform.position.z);
         }
