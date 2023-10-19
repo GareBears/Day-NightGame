@@ -54,11 +54,16 @@ public class PlayerControls : MonoBehaviour
 }
     void Start()
     {
-       
+       disabled = true;
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            disabled = false;
+        }
+
         if(!disabled)
         {
             PlayerAwake();
