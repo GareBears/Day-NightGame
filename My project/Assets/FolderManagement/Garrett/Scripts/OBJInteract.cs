@@ -21,6 +21,7 @@ public class OBJInteract : MonoBehaviour
     // Altar ////////////////////////////////////////////////
     private GameObject Altar;
     public GameObject Gems;
+    public Animator altarAnim;
 
     // Pillars ////////////////////////////////////////////////
     private Animator pillarMoveAnim;
@@ -75,8 +76,9 @@ public class OBJInteract : MonoBehaviour
 
         ///////////////////////////////////////////////////////
         
-        Altar = GameObject.Find("Altar");
-        Gems = GameObject.Find("AltarGems");
+        Altar = GameObject.FindGameObjectWithTag("Altar");
+        altarAnim = Altar.GetComponent<Animator>();
+        Gems = GameObject.Find("AltarPiece/Altar/AltarGems");
 
         ///////////////////////////////////////////////////////
 
@@ -150,6 +152,9 @@ public class OBJInteract : MonoBehaviour
         if (playerControls.canWin == true)
         {
             Gems.SetActive(true);
+            Debug.Log("Hello");
+            altarAnim.SetBool("AltarDown", true);
+            
         }
     } 
 

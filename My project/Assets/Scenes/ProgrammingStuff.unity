@@ -722,6 +722,7 @@ MonoBehaviour:
   wrong: 0
   door: {fileID: 469552501}
   Gems: {fileID: 0}
+  altarAnim: {fileID: 0}
   secretBool: 0
   secretBool2: 0
   secretBool3: 0
@@ -1250,6 +1251,7 @@ MonoBehaviour:
   wrong: 0
   door: {fileID: 469552501}
   Gems: {fileID: 0}
+  altarAnim: {fileID: 0}
   secretBool: 0
   secretBool2: 0
   secretBool3: 0
@@ -1655,6 +1657,7 @@ MonoBehaviour:
   wrong: 0
   door: {fileID: 469552501}
   Gems: {fileID: 0}
+  altarAnim: {fileID: 0}
   secretBool: 0
   secretBool2: 0
   secretBool3: 0
@@ -2569,6 +2572,18 @@ PrefabInstance:
     - target: {fileID: 4684116601757289071, guid: d655825a4f0017240963bfae569cbd32, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367327366416955638, guid: d655825a4f0017240963bfae569cbd32, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367327366416955638, guid: d655825a4f0017240963bfae569cbd32, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00007629395
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367327366416955638, guid: d655825a4f0017240963bfae569cbd32, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -31.50511
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d655825a4f0017240963bfae569cbd32, type: 3}
@@ -4775,6 +4790,7 @@ MonoBehaviour:
   wrong: 0
   door: {fileID: 0}
   Gems: {fileID: 242158542}
+  altarAnim: {fileID: 861810495}
   secretBool: 0
   secretBool2: 0
   secretBool3: 0
@@ -4792,6 +4808,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6646180667514570177, guid: d655825a4f0017240963bfae569cbd32, type: 3}
+--- !u!95 &861810495
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861810487}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a9e31eaeefb917b44a6ab3b473626402, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &872327906 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9f5bd2a4efa8a6a41a0851d8f5c1a70c, type: 3}
@@ -6664,6 +6700,7 @@ MonoBehaviour:
   wrong: 0
   door: {fileID: 469552501}
   Gems: {fileID: 0}
+  altarAnim: {fileID: 0}
   secretBool: 0
   secretBool2: 0
   secretBool3: 0
@@ -7008,6 +7045,7 @@ MonoBehaviour:
   wrong: 0
   door: {fileID: 469552501}
   Gems: {fileID: 0}
+  altarAnim: {fileID: 0}
   secretBool: 0
   secretBool2: 0
   secretBool3: 0
@@ -8902,6 +8940,7 @@ MonoBehaviour:
   wrong: 0
   door: {fileID: 469552501}
   Gems: {fileID: 0}
+  altarAnim: {fileID: 0}
   secretBool: 0
   secretBool2: 0
   secretBool3: 0
@@ -9044,6 +9083,7 @@ MonoBehaviour:
   wrong: 0
   door: {fileID: 469552501}
   Gems: {fileID: 0}
+  altarAnim: {fileID: 0}
   secretBool: 0
   secretBool2: 0
   secretBool3: 0
