@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8613718623241910021}
   - component: {fileID: 4622321482927650976}
   - component: {fileID: 7476326881048906858}
-  m_Layer: 0
+  - component: {fileID: 1461593991531810289}
+  m_Layer: 6
   m_Name: Water_Day
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8989681697363619263}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.36, y: 0.00000047683716, z: -37.705814}
-  m_LocalScale: {x: 1500, y: 100, z: 1500}
+  m_LocalScale: {x: 4000, y: 110, z: 4000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1461593991531810289
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989681697363619263}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.03198319, z: 0.01}
+  m_Center: {x: -0.0000000018626451, y: -0.000533893, z: 0.0000000037252903}
