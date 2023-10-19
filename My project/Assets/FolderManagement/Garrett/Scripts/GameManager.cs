@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        playerControls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
-        teleportScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Teleporting>();
+        //playerControls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
+        //teleportScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Teleporting>();
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-
+        playerControls.disabled = false;
     }
 
     public void GameWin()
