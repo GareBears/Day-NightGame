@@ -42,6 +42,12 @@ public class PlayerControls : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody>();
         //rb.freezeRotation = true;
+        
+
+}
+    void Start()
+    {
+        //disabled = true;
         teleportScript = GetComponent<Teleporting>();
         interactable = GameObject.Find("Interactable").GetComponent<Interactable>();
 
@@ -51,10 +57,6 @@ public class PlayerControls : MonoBehaviour
         hasGreenGem = false;
         canWin = false;
 
-}
-    void Start()
-    {
-       disabled = true;
     }
 
     private void Update()

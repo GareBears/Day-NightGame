@@ -27,6 +27,9 @@ public class Teleporting : MonoBehaviour
     public bool daytime = true;
     public bool nightime = false;
     public GameObject sunLight;
+
+    public Material daySkybox;
+    public Material nightSkybox;
     
     // Positions //////////////////////////////////////////////////////////////////
     private float playerPosNX;
@@ -36,6 +39,8 @@ public class Teleporting : MonoBehaviour
     public float currentItem;
     public GameObject clock;
     public GameObject lantern;
+    public GameObject note;
+    public GameObject ToDo;
 
     ///////////////////////////////////////////////////////////////////////////////
     void Start()
@@ -78,6 +83,8 @@ public class Teleporting : MonoBehaviour
             currentItem = 1f;
             clock.SetActive(false);
             lantern.SetActive(false);
+            note.SetActive(false);
+            ToDo.SetActive(false);
         }
 
         if (Input.GetKeyDown("2") && currentItem != 2 && hasWatch)
@@ -93,6 +100,8 @@ public class Teleporting : MonoBehaviour
                 currentItem = 2f;
                 //clock.SetActive(true);
                 lantern.SetActive(false);
+                note.SetActive(false);
+                ToDo.SetActive(false);
                 watchEquip.EquipTheWatch();
                 moonRotate.NightDial();
                 sunRotate.NightDial();
@@ -102,6 +111,8 @@ public class Teleporting : MonoBehaviour
                 currentItem = 2f;
                 //clock.SetActive(true);
                 lantern.SetActive(false);
+                note.SetActive(false);
+                ToDo.SetActive(false);
                 watchEquip.EquipTheWatch();
                 moonRotate.DayDial();
                 sunRotate.DayDial();
@@ -111,15 +122,30 @@ public class Teleporting : MonoBehaviour
         {
             currentItem = 3f;
             clock.SetActive(false);
+            note.SetActive(false);
+            ToDo.SetActive(false);
             lantern.SetActive(true);
             lanternEquip = GameObject.Find("Playerlantern").GetComponent<EquipLantern>();
             lanternEquip.EquipTheLantern();
         }
-        /////////////////////////////////////////////////////////////////////////
 
-        // Position Info ////////////////////////////////////////////////////////
-        playerPosNX = transform.position.x + 1000f;
+        if (Input.GetKeyDown("4") && currentItem != 4)
+        {
+            note.SetActive(true);
+            ToDo.SetActive(true);
+            clock.SetActive(false);
+            lantern.SetActive(false);
+        }    
+            /////////////////////////////////////////////////////////////////////////
+
+            // Position Info ////////////////////////////////////////////////////////
+            playerPosNX = transform.position.x + 1000f;
         playerPosDX = transform.position.x - 1000f;
+
+
+
+        
+
     }
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -133,6 +159,7 @@ public class Teleporting : MonoBehaviour
     {
         playerControls.disabled = true;
         yield return new WaitForSeconds(1f);
+        RenderSettings.skybox = nightSkybox;
         gameObject.transform.position = new Vector3(playerPosNX, transform.position.y, transform.position.z);
         nightime = true;
         daytime = false;
@@ -147,6 +174,7 @@ public class Teleporting : MonoBehaviour
     {
         playerControls.disabled = true;
         yield return new WaitForSeconds(1f);
+        RenderSettings.skybox = daySkybox;
         gameObject.transform.position = new Vector3(playerPosDX, transform.position.y, transform.position.z);
         daytime = true;
         nightime = false;
