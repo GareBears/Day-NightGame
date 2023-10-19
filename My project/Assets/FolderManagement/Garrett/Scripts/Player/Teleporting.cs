@@ -118,8 +118,8 @@ public class Teleporting : MonoBehaviour
         /////////////////////////////////////////////////////////////////////////
 
         // Position Info ////////////////////////////////////////////////////////
-        playerPosNX = transform.position.x + 300f;
-        playerPosDX = transform.position.x - 300f;
+        playerPosNX = transform.position.x + 1000f;
+        playerPosDX = transform.position.x - 1000f;
     }
 
     ///////////////////////////////////////////////////////////////////////////////

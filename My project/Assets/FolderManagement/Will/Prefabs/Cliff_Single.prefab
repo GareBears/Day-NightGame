@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 962676089330051515}
   - component: {fileID: 3078469299226500465}
   - component: {fileID: 4807800650740568751}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cliff_Single
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 3582639841906064548}
   m_LocalRotation: {x: 0, y: -0.40267482, z: 0, w: 0.9153431}
   m_LocalPosition: {x: 38.7, y: 0, z: -36.8}
-  m_LocalScale: {x: 161.35509, y: 125.64841, z: 161.49028}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 150, y: 150, z: 150}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

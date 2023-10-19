@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3353222567562638064}
   - component: {fileID: 2450051814396533498}
   - component: {fileID: 4622989978910044996}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: polySurface2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5594754040287514007}
   - component: {fileID: 7656251727273015645}
   - component: {fileID: 2388782216920334252}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Colored_Land
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 8160667735856748680}
   m_LocalRotation: {x: 0, y: -0.71301186, z: 0, w: 0.7011521}
   m_LocalPosition: {x: 46.8, y: 0.0000038146973, z: 4.4}
-  m_LocalScale: {x: 47.615337, y: 47.615337, z: 47.615337}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3353222567562638064}

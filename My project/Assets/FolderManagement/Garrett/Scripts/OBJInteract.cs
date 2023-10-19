@@ -10,7 +10,8 @@ public class OBJInteract : MonoBehaviour
     PillarDoor pillarDoor;
 
     // Telescope //////////////////////////////////////////////
-    private Animator telescopeAnim;
+    public Animator telescopeAnim;
+    public GameObject telescope;
     public float rotates = 0;
     public bool right;
     public bool wrong;
@@ -24,12 +25,12 @@ public class OBJInteract : MonoBehaviour
     public Animator altarAnim;
 
     // Pillars ////////////////////////////////////////////////
-    private Animator pillarMoveAnim;
-    private Animator pillarMoveAnim2;
-    private Animator pillarMoveAnim3;
-    private Animator pillarMoveAnim4;
-    private Animator pillarMoveAnim5;
-    private Animator pillarMoveAnim6;
+    public Animator pillarMoveAnim;
+    public Animator pillarMoveAnim2;
+    public Animator pillarMoveAnim3;
+    public Animator pillarMoveAnim4;
+    public Animator pillarMoveAnim5;
+    public Animator pillarMoveAnim6;
 
     private bool pillardown = false;
     private bool pillardown2 = false;
@@ -43,25 +44,30 @@ public class OBJInteract : MonoBehaviour
     public bool secretBool3 = false;
 
 
-    private GameObject pillar1;
-    private GameObject pillarLantern1;
+    public GameObject pillar1;
+    public GameObject pillarLantern1;
 
-    private GameObject pillar2;
-    private GameObject pillarLantern2;
+    public GameObject pillar2;
+    public GameObject pillarLantern2;
 
-    private GameObject pillar3;
-    private GameObject pillarLantern3;
+    public GameObject pillar3;
+    public GameObject pillarLantern3;
 
-    private GameObject pillar4;
-    private GameObject pillarLantern4;
+    public GameObject pillar4;
+    public GameObject pillarLantern4;
 
-    private GameObject pillar5;
-    private GameObject pillarLantern5;
+    public GameObject pillar5;
+    public GameObject pillarLantern5;
 
-    private GameObject pillar6;
-    private GameObject pillarLantern6;
+    public GameObject pillar6;
+    public GameObject pillarLantern6;
 
     private void Awake()
+    {
+        
+    }
+
+    public void Start()
     {
         playerControls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
 
@@ -72,10 +78,10 @@ public class OBJInteract : MonoBehaviour
         ///////////////////////////////////////////////////////
 
         doorOpenPos = door.transform.position.y;
-        telescopeAnim = GameObject.Find("Telescope").GetComponent<Animator>();
+        telescopeAnim = telescope.GetComponent<Animator>();
 
         ///////////////////////////////////////////////////////
-        
+
         Altar = GameObject.FindGameObjectWithTag("Altar");
         altarAnim = Altar.GetComponent<Animator>();
         Gems = GameObject.Find("AltarPiece/Altar/AltarGems");
@@ -103,9 +109,9 @@ public class OBJInteract : MonoBehaviour
         pillarLantern4 = GameObject.Find("PuzzlePillar4/FirePillar4/PillarLantern4");
 
         // Pillar 5 //
-        pillarMoveAnim5 = GameObject.Find("PuzzlePillar5/FirePillar5").GetComponent<Animator>();
-        pillar5 = GameObject.Find("PuzzlePillar5/FirePillar5");
-        pillarLantern5 = GameObject.Find("PuzzlePillar5/FirePillar5/PillarLantern5");
+        pillarMoveAnim5 = GameObject.Find("FirePuzzle (DO NOT TOUCH)/PuzzlePillar5/FirePillar5").GetComponent<Animator>();
+        pillar5 = GameObject.Find("FirePuzzle (DO NOT TOUCH)/PuzzlePillar5/FirePillar5");
+        pillarLantern5 = GameObject.Find("FirePuzzle (DO NOT TOUCH)/PuzzlePillar5/FirePillar5/PillarLantern5");
 
         // Pillar 6 //
         pillarMoveAnim6 = GameObject.Find("PuzzlePillar6/FirePillar6").GetComponent<Animator>();
@@ -289,7 +295,7 @@ public class OBJInteract : MonoBehaviour
 
         ///////////////////////////////////////////////////////
 
-        if (rotates >= 4)
+        if (rotates == 4)
         {
             rotates = 0;
         }
@@ -298,7 +304,7 @@ public class OBJInteract : MonoBehaviour
         {
             door.transform.position = new Vector3(door.transform.position.x, doorOpenPos - 6f, door.transform.position.z);
         }
-        if (right == false && wrong == true)
+        else if (right == false && wrong == true)
         {
             door.transform.position = new Vector3(door.transform.position.x, doorOpenPos, door.transform.position.z);
         }

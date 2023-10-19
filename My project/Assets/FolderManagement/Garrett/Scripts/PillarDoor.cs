@@ -22,8 +22,8 @@ public class PillarDoor : MonoBehaviour
     void Start()
     {
         pillarDoor = GameObject.Find("PillarPuzzleDoor");
-        openPosY = transform.position.y - 6f;
-        closedPosY = transform.position.y + 6f;
+        openPosY = transform.position.y - 20f;
+        closedPosY = transform.position.y;
     }
 
     // Update is called once per frame
@@ -45,22 +45,22 @@ public class PillarDoor : MonoBehaviour
         
         
 
-        if (!secretBool && secretBool2 && secretBool3 || !secretBool && !secretBool2 && secretBool3 || !secretBool && !secretBool2 && !secretBool3)
+        else if (!secretBool && secretBool2 && secretBool3 || !secretBool && !secretBool2 && secretBool3 || !secretBool && !secretBool2 && !secretBool3)
         {
             pillarDoor.transform.position = new Vector3(pillarDoor.transform.position.x, closedPosY, pillarDoor.transform.position.z);
         }
 
-        if (secretBool && !secretBool2 && secretBool3 || secretBool && !secretBool2 && !secretBool3)
+        else if (secretBool && !secretBool2 && secretBool3 || secretBool && !secretBool2 && !secretBool3)
         {
             pillarDoor.transform.position = new Vector3(pillarDoor.transform.position.x, closedPosY, pillarDoor.transform.position.z);
         }
 
-        if (secretBool && secretBool2 && !secretBool3 || !secretBool && secretBool2 && !secretBool3)
+        else if (secretBool && secretBool2 && !secretBool3 || !secretBool && secretBool2 && !secretBool3)
         {
             pillarDoor.transform.position = new Vector3(pillarDoor.transform.position.x, closedPosY, pillarDoor.transform.position.z);
         }
 
-        if (fakeBool || fakeBool2 || fakeBool3)
+        else if (fakeBool || fakeBool2 || fakeBool3)
         {
             pillarDoor.transform.position = new Vector3(pillarDoor.transform.position.x, closedPosY, pillarDoor.transform.position.z);
         }
