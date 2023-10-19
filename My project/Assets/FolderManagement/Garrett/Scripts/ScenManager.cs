@@ -15,6 +15,9 @@ public class ScenManager : MonoBehaviour
     GameManager gameManager;
     BlackFade fadetoBlack;
 
+    public GameObject creditsScreen;
+    public GameObject goBackButton;
+
     private int levelToLoad;
 
     // Start is called before the first frame update
@@ -48,6 +51,26 @@ public class ScenManager : MonoBehaviour
     public void OnFadeComplete()
     {
         
+    }
+
+    public void CreditShow()
+    {
+        creditsScreen.SetActive(true);
+        goBackButton.SetActive(true);
+        PlayButton.SetActive(false);
+        Title.SetActive(false);
+        Credits.SetActive(false);
+        QuitButton.SetActive(false);
+    }
+
+    public void GoBackMain()
+    {
+        creditsScreen.SetActive(false);
+        goBackButton.SetActive(false);
+        PlayButton.SetActive(true);
+        Title.SetActive(true);
+        Credits.SetActive(true);
+        QuitButton.SetActive(true);
     }
 
 }
