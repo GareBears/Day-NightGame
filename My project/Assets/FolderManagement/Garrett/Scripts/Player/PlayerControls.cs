@@ -71,42 +71,6 @@ public class PlayerControls : MonoBehaviour
             PlayerAwake();
         }
 
-        if (tempControl)
-        {
-            // Overheating
-            if (!overheating && !burning)
-            {
-                speed = 15f;
-                heatstroke.SetActive(false);
-            }
-            else if (overheating && !burning)
-            {
-                speed = 7.5f;
-                heatstroke.SetActive(true);
-                heatburn.SetActive(false);
-            }
-            else if (overheating && burning)
-            {
-                speed = 1f;
-                heatburn.SetActive(true);
-            }
-        }
-        else if (!tempControl)
-        {
-            // Freezing
-            if (!freezing && !frozen)
-            {
-                speed = 15;
-            }
-            else if (freezing && !frozen)
-            {
-                speed = 7.5f;
-            }
-            else if (freezing && frozen)
-            {
-                speed = 1f;
-            }
-        }
 
         if (hasBlueGem == true && hasGreenGem == true && hasRedGem == true)
         {

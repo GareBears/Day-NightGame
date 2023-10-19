@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RotateSkyBox : MonoBehaviour
 {
+    public bool isrotating = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,9 @@ public class RotateSkyBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RenderSettings.skybox.SetFloat("_Rotation", Time.time * -1f);
+        if ( isrotating == true)
+        {
+            RenderSettings.skybox.SetFloat("_Rotation", Time.time * -1f);
+        }
     }
 }

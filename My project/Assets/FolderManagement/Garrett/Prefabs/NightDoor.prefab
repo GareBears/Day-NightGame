@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 102831859999840027}
   - component: {fileID: 2776929048745665489}
   - component: {fileID: 8412428037768035174}
+  - component: {fileID: 7155826765197339394}
   m_Layer: 0
   m_Name: NightDoor
   m_TagString: Untagged
@@ -28,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 4434178876869788164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 500.00003, y: 1809.2465, z: 1162.7756}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 293.25992, y: 1061.1588, z: 814.5018}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,3 +99,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2309039186301365694, guid: 65d8a49f93de45e4981c34b7ce22ac5d, type: 3}
+--- !u!65 &7155826765197339394
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4434178876869788164}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02214957, y: 0.025980098, z: 0.034074288}
+  m_Center: {x: 0.0007543347, y: 0.00010186072, z: -0.0086991405}

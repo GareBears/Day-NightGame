@@ -22,6 +22,7 @@ public class Teleporting : MonoBehaviour
     EquipLantern lanternEquip;
     Temperature heat;
     SleepFade whitefade;
+    RotateSkyBox skyboxrotate;
 
     // Time of Day  ///////////////////////////////////////////////////////////////
     public bool daytime = true;
@@ -42,6 +43,13 @@ public class Teleporting : MonoBehaviour
     public GameObject note;
     public GameObject ToDo;
 
+    public GameObject Draco;
+    public GameObject Cancer;
+    public GameObject Lupus;
+    public GameObject otherConst;
+
+    public GameObject HotBar4;
+
     ///////////////////////////////////////////////////////////////////////////////
     void Start()
     {
@@ -49,6 +57,7 @@ public class Teleporting : MonoBehaviour
         playerControls = gameObject.GetComponent<PlayerControls>();
         heat = gameObject.GetComponent<Temperature>();
         whitefade = GameObject.Find("Canvas").GetComponent<SleepFade>();
+        skyboxrotate = GameObject.Find("SkyBoxRotate").GetComponent<RotateSkyBox>();
     }
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -57,7 +66,7 @@ public class Teleporting : MonoBehaviour
         if (!disabled)
         {
             // DAY TRAVEL ( DO NOT TOUCH ) ////////////////////////////////////////
-            if (currentItem == 2 && hasWatch)
+            if (currentItem == 4 && hasWatch)
             {
                 if (Input.GetKeyDown(KeyCode.J) && daytime && playerControls.isGrounded == true && whitefade.fadecooldown == false)
                 {
@@ -87,7 +96,7 @@ public class Teleporting : MonoBehaviour
             ToDo.SetActive(false);
         }
 
-        if (Input.GetKeyDown("2") && currentItem != 2 && hasWatch)
+        if (Input.GetKeyDown("4") && currentItem != 4 && hasWatch)
         {
             //EquipWatch();
             clock.SetActive(true);
@@ -97,7 +106,7 @@ public class Teleporting : MonoBehaviour
 
             if (!daytime)
             {
-                currentItem = 2f;
+                currentItem = 4f;
                 //clock.SetActive(true);
                 lantern.SetActive(false);
                 note.SetActive(false);
@@ -108,7 +117,7 @@ public class Teleporting : MonoBehaviour
             }
             else if (daytime)
             {
-                currentItem = 2f;
+                currentItem = 4f;
                 //clock.SetActive(true);
                 lantern.SetActive(false);
                 note.SetActive(false);
@@ -129,8 +138,9 @@ public class Teleporting : MonoBehaviour
             lanternEquip.EquipTheLantern();
         }
 
-        if (Input.GetKeyDown("4") && currentItem != 4)
+        if (Input.GetKeyDown("2") && currentItem != 2)
         {
+            currentItem = 2f;
             note.SetActive(true);
             ToDo.SetActive(true);
             clock.SetActive(false);
@@ -142,6 +152,10 @@ public class Teleporting : MonoBehaviour
             playerPosNX = transform.position.x + 1000f;
         playerPosDX = transform.position.x - 1000f;
 
+        if (hasWatch)
+        {
+            HotBar4.SetActive(true);
+        }
 
 
         
@@ -160,6 +174,11 @@ public class Teleporting : MonoBehaviour
         playerControls.disabled = true;
         yield return new WaitForSeconds(1f);
         RenderSettings.skybox = nightSkybox;
+        skyboxrotate.isrotating = false;
+        Draco.SetActive(true);
+        Cancer.SetActive(true);
+        Lupus.SetActive(true);
+        otherConst.SetActive(true);
         gameObject.transform.position = new Vector3(playerPosNX, transform.position.y, transform.position.z);
         nightime = true;
         daytime = false;
@@ -175,6 +194,11 @@ public class Teleporting : MonoBehaviour
         playerControls.disabled = true;
         yield return new WaitForSeconds(1f);
         RenderSettings.skybox = daySkybox;
+        skyboxrotate.isrotating = true;
+        Draco.SetActive(false);
+        Cancer.SetActive(false);
+        Lupus.SetActive(false);
+        otherConst.SetActive(false);
         gameObject.transform.position = new Vector3(playerPosDX, transform.position.y, transform.position.z);
         daytime = true;
         nightime = false;
