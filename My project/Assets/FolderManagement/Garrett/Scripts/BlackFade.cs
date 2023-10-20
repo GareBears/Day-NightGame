@@ -14,6 +14,9 @@ public class BlackFade : MonoBehaviour
 
     private float startingPos;
 
+    public float currentScene;
+    private float mainMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,43 +26,42 @@ public class BlackFade : MonoBehaviour
 
     private void Awake()
     {
-        //DontDestroyOnLoad(this);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            FadeToLevel();
-        }
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+        mainMenu = currentScene - 1;
+
     }
 
     public void FadeToLevel()
     {
-        FadeToBlack(SceneManager.GetActiveScene().buildIndex + 1);
+        if (currentScene == 1)
+        {
+            FadeToBlack(0);
+        }
+        if (currentScene == 0)
+        {
+            FadeToBlack(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     public void FadeToBlack(int levelIndex)
     {
         levelToLoad = levelIndex;
         animator.SetTrigger("FadeOut");
-        //new WaitForSeconds(2);
-        //SceneLoad();
-        //StartCoroutine("ResetFade");
     }
 
     IEnumerator ResetFade()
     {
         yield return new WaitForSeconds(3);
-        //animator.SetBool("FadeToBlack", false);
-        //yield return new WaitForSeconds(1);
-        //fadecooldown = false;
     }
 
     public void SceneLoad()
     {
-        new WaitForSeconds(10);
         SceneManager.LoadScene(levelToLoad);
     }
 

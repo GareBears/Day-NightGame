@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using static Unity.VisualScripting.Member;
+using UnityEngine.SceneManagement;
 
 public class OBJInteract : MonoBehaviour
 {
     PlayerControls playerControls;
     PillarDoor pillarDoor;
+    ScenManager scenManager;
+    BlackFade fadetoBlack;
+
+    public GameObject blackfade;
 
     // Telescope //////////////////////////////////////////////
     public Animator telescopeAnim;
@@ -69,7 +74,10 @@ public class OBJInteract : MonoBehaviour
 
     public void Start()
     {
+
+        fadetoBlack = blackfade.GetComponent<BlackFade>();
         playerControls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
+        scenManager = GameObject.Find("SceneManager").GetComponent<ScenManager>();
 
         ///////////////////////////////////////////////////////
 
@@ -160,7 +168,10 @@ public class OBJInteract : MonoBehaviour
             Gems.SetActive(true);
             Debug.Log("Hello");
             altarAnim.SetBool("AltarDown", true);
-            
+            playerControls.disabled = true;
+            //scenManager.LoadScene(1);
+            fadetoBlack.FadeToLevel();
+            //SceneManager.LoadScene(0);
         }
     } 
 
