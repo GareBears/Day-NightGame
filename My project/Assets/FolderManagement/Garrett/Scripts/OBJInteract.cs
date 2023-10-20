@@ -8,6 +8,8 @@ public class OBJInteract : MonoBehaviour
 {
     PlayerControls playerControls;
     PillarDoor pillarDoor;
+    GameManager gameManager;
+    Whitefade whitefade;
 
     // Telescope //////////////////////////////////////////////
     public Animator telescopeAnim;
@@ -69,6 +71,8 @@ public class OBJInteract : MonoBehaviour
 
     public void Start()
     {
+        whitefade = GameObject.Find("ReturnToMain").GetComponent<Whitefade>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerControls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
 
         ///////////////////////////////////////////////////////
@@ -160,7 +164,8 @@ public class OBJInteract : MonoBehaviour
             Gems.SetActive(true);
             Debug.Log("Hello");
             altarAnim.SetBool("AltarDown", true);
-            
+            playerControls.disabled = true;
+            whitefade.WhitefadeTime();
         }
     } 
 

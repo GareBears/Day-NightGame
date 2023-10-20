@@ -29,10 +29,10 @@ public class BlackFade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            FadeToLevel();
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+
+        //}
     }
 
     public void FadeToLevel()
