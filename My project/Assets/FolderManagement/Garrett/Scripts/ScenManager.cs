@@ -18,8 +18,6 @@ public class ScenManager : MonoBehaviour
     public GameObject creditsScreen;
     public GameObject goBackButton;
 
-    public int currentScene;
-
     private int levelToLoad;
 
     // Start is called before the first frame update
@@ -27,9 +25,6 @@ public class ScenManager : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         fadetoBlack = GameObject.Find("LevelLoader").GetComponent<BlackFade>();
-
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
     }
 
     // Update is called once per frame
@@ -50,7 +45,6 @@ public class ScenManager : MonoBehaviour
 
     public void LoadScene(int levelIndex)
     {
-        currentScene = -1;
         fadetoBlack.FadeToLevel(); 
     }
 
